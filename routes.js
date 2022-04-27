@@ -33,7 +33,7 @@ router.post("/signup",async (req,res)=>{
         email:req.body.email,
         password:pass
         }
-        const data = await knex("users").insert(y)
+        const data =  knex("users").insert(y)
         console.log("user added succcesfull")
         res.send("user added succesfull")
     }
