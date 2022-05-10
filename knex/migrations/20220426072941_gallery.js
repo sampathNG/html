@@ -41,5 +41,8 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTable('gallery');
+    return knex.schema
+    .dropTable('users')
+    .dropTable('testimonial')
+    .dropTable('gallery')
 };

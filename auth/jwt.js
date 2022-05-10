@@ -1,4 +1,6 @@
-require("dotenv").config()
+// require("dotenv").config()
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 const jwt = require("jsonwebtoken")
 
 function generateToken(userData){
@@ -38,5 +40,5 @@ const authorization = (permissions) => {
 
 }
 //  authorization(["admin"])
-
+// console.log(process.env.SECRET)
 module.exports = {generateToken,authenticateToken,authorization}

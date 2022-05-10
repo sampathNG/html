@@ -8,7 +8,7 @@ connection: {
     database : 'supagrow2'
 }
 });
-// run ut
+
 knex.schema.createTable("users",(t)=>{
     t.increments("user_id").primary(),
     t.string("first_name"),
@@ -29,10 +29,24 @@ knex.schema.createTable("testimonial",(t)=>{
     t.string("image"),
     t.string("description"),
     t.string("status"),
-    t.timestamp("created_at").defaultTo(knex.fn.now()),
-    t.timestamp("updated_at").defaultTo(knex.fn.now()),
     t.string("created_by"),
     t.string("updated_by")
+    t.timestamp("created_at").defaultTo(knex.fn.now()),
+    t.timestamp("updated_at").defaultTo(knex.fn.now())
+}).then((data)=>{
+    console.log("table created")
+}).catch((err)=>{
+    console.log("table already exists")
+})
+
+knex.schema.createTable("gallery",(t)=>{
+    t.increments().primary(),
+    t.string("image"),
+    t.string("status"),
+    t.string("created_by"),
+    t.string("updated_by")
+    t.timestamp("created_at").defaultTo(knex.fn.now()),
+    t.timestamp("updated_at").defaultTo(knex.fn.now())
 }).then((data)=>{
     console.log("table created")
 }).catch((err)=>{
