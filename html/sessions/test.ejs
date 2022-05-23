@@ -1,0 +1,90 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title></title> <!-- Tell the browser to be responsive to screen width --> <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> <meta name="csrf-token" content="2cBLqWfKn32slC1GhSPFMYQtK1Bn7LsimnUF6DlH"> <link rel="stylesheet" type="text/css" href="https://trainwithalisha.supagrow.in/css/jquery-ui.min.css"> <link rel="stylesheet" type="text/css" href="https://trainwithalisha.supagrow.in/css/jquery-ui.structure.min.css"> <link rel="stylesheet" type="text/css" href="https://trainwithalisha.supagrow.in/css/jquery-ui.theme.min.css"> <link rel="stylesheet" type="text/css" href="https://trainwithalisha.supagrow.in/css/app.css"> <link href="https://trainwithalisha.supagrow.in/css/multi-select.min.css" rel="stylesheet" /> <link rel="stylesheet" href="https://trainwithalisha.supagrow.in/css/bootstrap-tagsinput.css" /> <style> .edit-loader {
+
+    /*position:   relative;
+    z-index:    1000;*/
+    /*top: calc(50% - 24px);*/
+    /*top:0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) url('https://trainwithalisha.supagrow.in/ajax-loader.gif') 50% 50% no-repeat;*/
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 9999;
+   background: rgba( 255, 255,255, .8 ) url('https://trainwithalisha.supagrow.in/ajax-loader.gif') 50% 50% no-repeat;
+   /*background-image: url('https://trainwithalisha.supagrow.in/ajax-loader.gif');
+   background-repeat: no-repeat;
+   background-color: #FFF;
+   background-position: center;*/
+}
+ .page-loader {
+
+    position:   fixed;
+    z-index:    1000;
+    top:0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) url('https://trainwithalisha.supagrow.in/ajax-loader.gif') 50% 50% no-repeat;
+}
+
+    .error{
+        color:red;
+    }
+    .inp{
+        border-color: red;
+    } </style> <!-- Bootstrap 3.3.7 --> <!-- <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"> --> <!-- Font Awesome --> <link rel="stylesheet" href="https://trainwithalisha.supagrow.in/css/font-awesome.min.css"> <!-- Ionicons --> <link rel="stylesheet" href="https://trainwithalisha.supagrow.in/css/ionicons.min.css"> <!-- Theme style --> <link rel="stylesheet" href="https://trainwithalisha.supagrow.in/css/AdminLTE.min.css"> <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. --> <link rel="stylesheet" href="https://trainwithalisha.supagrow.in/css/skins/_all-skins.min.css"> <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --> <!-- WARNING: Respond.js doesn't work if you view the page via file:// --> <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]--> <!-- Google Font --> <style> .content-header>.breadcrumb {
+    float: none;
+    right:0px;
+    font-size: 15px;
+    position: static;
+  }
+
+  .content-header>.breadcrumb>li>a.active{
+    color:#3c8dbc;
+  }
+
+
+  .navbar-nav li .dropdown .dropbtn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-transform: capitalize;
+  }
+
+  /*.navbar-nav li .dropbtn:hover .dropdown-content{display:block;}*/
+
+  .navbar-nav li .dropdown-content {
+    display: none;
+    position: absolute;
+    background: #2f90c7;
+    top: 37px;
+   bottom: 0;
+  padding: 0;
+    width: 140px;
+  }
+
+  .navbar-nav li .dropdown-content a {
+    display: block;
+    color: #fff;
+    padding: 5px 10px;
+    border-bottom: 1px solid #fff;
+  }
+
+  .navbar-nav li .dropdown-content a:last-child {
+    border: none;
+  }
+
+  .navbar-nav li .dropdown-content a:hover {
+    background: rgba(0,0,0,0.1);
+  }
+
+  .navbar-nav li .dropdown:hover .dropdown-content {
+    display: block;
+  } </style> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> </head><!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. --> <body class="hold-transition skin-blue layout-top-nav"> <div class="wrapper"> <header class="main-header" style="z-index: 10;"> <nav class="navbar navbar-expand-sm"> <div class="container"> <div class="navbar-header"> <a href="javascript:void(0)" class="navbar-brand"><b></b></a> </div> <!-- Collect the nav links, forms, and other content for toggling --> <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> <ul class="nav navbar-nav mr-auto"> <li class="nav-item"><a class="nav-link" id="testimonial_link" href="https://trainwithalisha.supagrow.in/control/testimonial">Testimonial</a></li> <li class="nav-item"><a class="nav-link" id="recipe_link" href="https://trainwithalisha.supagrow.in/control/recipe">Recipe</a></li> <li class="nav-item"><a class="nav-link" id="gallery_link" href="https://trainwithalisha.supagrow.in/control/gallery">Gallery</a></li> </ul> <ul class="nav navbar-nav ml-auto"> <!-- Authentication Links --> <li class="nav-item "> <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> Welcome Admin<span class="caret"></span> </a> <div class="dropdown-menu dropdown-menu-right mr-5" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="https://trainwithalisha.supagrow.in/control/logout" onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();"> Logout </a> <form id="logout-form" action="https://trainwithalisha.supagrow.in/control/logout" method="POST" style="display: none;"> <input type="hidden" name="_token" value="2cBLqWfKn32slC1GhSPFMYQtK1Bn7LsimnUF6DlH"> </form> </div> </li> </ul> </li> </ul> </div> <!-- /.navbar-collapse --> <!-- Navbar Right Menu --> </div> <!-- /.container-fluid --> </nav> </header> <!-- Full Width Column --> <div class="content-wrapper" id="app"> <div class="container"> <!-- Content Header (Page header) --> <section class="content-header"> <ol class="breadcrumb"> <li class="breadcrumb-item"><a class="active" href="https://trainwithalisha.supagrow.in/control/testimonial">Testimonial</a></li> </ol> </section> <!-- Main content --> <section class="content" id="main"> <div class="box"> <div class="box-header with-border"> <h3 class="box-title">Testimonials</h3> <span class="pull-right"> <a class="btn btn-info" href="https://trainwithalisha.supagrow.in/control/testimonial/create"><i class="fa fa-plus-square"></i></a> <a href="#" class="btn btn-danger ml-2" id="delete_multiple"><i class="fa fa-trash"></i></a> </span> </div> <!-- /.box-header --> <div class="box-body"> <table class="table table-bordered text-center"> <tr> <th class="text-center"><input type="checkbox" id="head" class="delete_multiple"></th> <th>Image</th> <th>Name</th> <th>Status</th> <th>Action</th> </tr> <tbody id="tbody"> <tr id='2'> <td class="text-center"><input type=checkbox disabled class='checkbox checkbox2' id="2" ></td> <td> <a target="_blank" href="https://trainwithalisha.supagrow.in/testimonials/Testimonial-2_1648455723.png"><img style="width: 10%;" src="https://trainwithalisha.supagrow.in/testimonials/Testimonial-2_1648455723.png"></a> </td> <td> Health Care </td> <td> Active </td> <td> <a href="https://trainwithalisha.supagrow.in/control/testimonial/2/edit" class="btn btn-info"><i class="fa fa-edit"></i></a> </td> </tr> <tr id='3'> <td class="text-center"><input type=checkbox disabled class='checkbox checkbox3' id="3" ></td> <td> <a target="_blank" href="https://trainwithalisha.supagrow.in/testimonials/Testimonial-1_1648455744.png"><img style="width: 10%;" src="https://trainwithalisha.supagrow.in/testimonials/Testimonial-1_1648455744.png"></a> </td> <td> Akshini Shetty </td> <td> Active </td> <td> <a href="https://trainwithalisha.supagrow.in/control/testimonial/3/edit" class="btn btn-info"><i class="fa fa-edit"></i></a> </td> </tr> <tr id='14'> <td class="text-center"><input type=checkbox  class='checkbox checkbox14' id="14" ></td> <td> <a target="_blank" href="https://trainwithalisha.supagrow.in/testimonials/imgonline-com-ua-resize-df9nenwXpqA_1650273547.jpeg"><img style="width: 10%;" src="https://trainwithalisha.supagrow.in/testimonials/imgonline-com-ua-resize-df9nenwXpqA_1650273547.jpeg"></a> </td> <td> Test </td> <td> Inactive </td> <td> <a href="https://trainwithalisha.supagrow.in/control/testimonial/14/edit" class="btn btn-info"><i class="fa fa-edit"></i></a> <a href="#" class="delete_single btn btn-danger ml-2 delete_testimonial14" style="display: " id="14"><i class="fa fa-trash"></i></a> </td> </tr> </tbody> </table> </div> <!-- /.box-body --> <div class="box-footer clearfix"> <ul class="pagination pagination-sm no-margin pull-right"> </ul> </div> </div> </section> </div> <div id="dialog"></div> <div id="dialog_multi"></div> <div id="dialog_info"></div> </div> </div> <!-- /.box --> </section> <!-- /.content --> </div> <!-- /.container --> </div> <!-- /.content-wrapper --> <footer class="main-footer"> <div class="container"> <strong>Copyright &copy; <a href="javascript:void(0);"></a></strong><br> Powered by Supagrow </div> <!-- /.container --> </footer> </div> <!-- ./wrapper --> <script type="text/javascript" src=https://trainwithalisha.supagrow.in/js/app.js></script> <script type="text/javascript" src=https://trainwithalisha.supagrow.in/js/jquery-ui.min.js></script> <script type="text/javascript" src=https://trainwithalisha.supagrow.in/js/jquery.validate.min.js></script> <!-- SlimScroll --> <script src="https://trainwithalisha.supagrow.in/js/jquery.slimscroll.min.js"></script> <!-- FastClick --> <script src="https://trainwithalisha.supagrow.in/js/fastclick.js"></script> <!-- AdminLTE App --> <script src="https://trainwithalisha.supagrow.in/js/adminlte.min.js"></script> <!-- AdminLTE for demo purposes --> <script src="https://trainwithalisha.supagrow.in/js/demo.js"></script> <script> $("#testimonial_link").parent().addClass("active"); </script> <script type="text/javascript" src="https://trainwithalisha.supagrow.in/js/delete_single.js"></script> <script type="text/javascript" src="https://trainwithalisha.supagrow.in/js/delete_multiple.js"></script> <script type="text/javascript"> delete_btn("https://trainwithalisha.supagrow.in/control/testimonial/delete_multiple");
+        delete_single("https://trainwithalisha.supagrow.in/control/testimonial/delete_multiple"); </script> </body> </html>
